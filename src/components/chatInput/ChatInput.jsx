@@ -1,5 +1,43 @@
 import React, { useState } from "react";
-import cssStyle from "./ChatInput.module.css";
+import styled from "styled-components";
+
+const DivINput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: #f9f9f9;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+`;
 
 export default function ChatInput({ onSend }) {
   const [text, setText] = useState("");
@@ -12,15 +50,14 @@ export default function ChatInput({ onSend }) {
   };
 
   return (
-    <div className={cssStyle.chatInputContainer}>
+    <DivINput>
       <input
         type="text"
         placeholder="Напиши сообщение..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className={cssStyle.chatInput}
       />
-      {text.trim() !== "" && <button className={cssStyle.chatBtn} onClick={handleClick}>Отправить</button>}
-    </div>
+      {text.trim() !== "" && <button onClick={handleClick}>Отправить</button>}
+    </DivINput>
   );
 }

@@ -15,7 +15,7 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
+    <div>
       <ChatList messages={messages} />
       <ChatInput onSend={handleSend} />
     </div>
