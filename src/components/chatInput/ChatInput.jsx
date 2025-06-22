@@ -9,11 +9,6 @@ const DivINput = styled.div`
   border-top: 1px solid #ccc;
   background-color: #f9f9f9;
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
   input {
     width: 100%;
     padding: 8px;
@@ -42,7 +37,7 @@ const DivINput = styled.div`
 export default function ChatInput({ onSend }) {
   const [text, setText] = useState("");
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     if (text.trim() !== "") {
       onSend(text);
       setText("");

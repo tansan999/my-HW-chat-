@@ -1,3 +1,4 @@
+import React from "react";
 import ChatItem from "../chatItem/ChatItem";
 import styled from "styled-components";
 
@@ -13,12 +14,19 @@ const UL = styled.ul`
   transition: all 0.3s ease;
 `;
 
-export default function ChatList({ messages }) {
+const ChatList = ({ messages, onDelete, onToggleRead }) => {
   return (
     <UL>
       {messages.map((msg) => (
-        <ChatItem key={msg.id} title={msg.title} date={msg.date} />
+        <ChatItem
+          key={msg.id}
+          message={msg}
+          onDelete={() => onDelete(msg.id)}
+          onToggleRead={() => onToggleRead(msg.id)}
+        />
       ))}
     </UL>
   );
-}
+};
+
+export default ChatList;
